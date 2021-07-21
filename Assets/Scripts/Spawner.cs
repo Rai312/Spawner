@@ -7,7 +7,7 @@ public class Spawner : ObjectPool
     [SerializeField] private Transform[] _spawnPoints;
 
     private float _elapsedTime = 0;
-    private int currentNumberPoints = 0;
+    private int _currentNumberPoint = 0;
 
     private void Start()
     {
@@ -22,17 +22,17 @@ public class Spawner : ObjectPool
         {
             if (TryGetObject(out GameObject enemy))
             {
-                if (currentNumberPoints < _spawnPoints.Length)
+                if (_currentNumberPoint < _spawnPoints.Length)
                 {
                     _elapsedTime = 0;
 
-                    SetEnemy(enemy, _spawnPoints[currentNumberPoints].position);
+                    SetEnemy(enemy, _spawnPoints[_currentNumberPoint].position);
 
-                    currentNumberPoints++;
+                    _currentNumberPoint++;
                 }
                 else
                 {
-                    currentNumberPoints = 0;
+                    _currentNumberPoint = 0;
                 }
             }
         }
